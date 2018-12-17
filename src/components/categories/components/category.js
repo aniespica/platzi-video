@@ -1,5 +1,5 @@
 import React from 'react'
-import Playlist from '../playlist/playlist'
+import Playlist from '../../playlist/components/playlist'
 import './category.css'
 export default function Category(props) {
   return (

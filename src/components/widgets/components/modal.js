@@ -4,7 +4,10 @@ export default function Modal(props) {
   return(
     <div className="Modal">
       {props.children}
-      <button onClick={props.handleClick}>close</button>
+      <button 
+        onClick={props.handleClick}
+        className="Modal-close"
+      />
     </div>
   )
 }

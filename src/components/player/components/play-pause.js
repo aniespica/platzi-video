@@ -1,6 +1,6 @@
 import React from 'react'
-import Play from '../../icons/play'
-import Pause from '../../icons/pause'
+import Play from '../../icons/components/play'
+import Pause from '../../icons/components/pause'
 import './play-pause.css'
 export default function PlayPause(props) {
   return (

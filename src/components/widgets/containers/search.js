@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Search from '../components/widgets/search'
+import Search from '../components/search'
 export default class SearchContainer extends Component {
   handleSubmit = event => {
     event.preventDefault()

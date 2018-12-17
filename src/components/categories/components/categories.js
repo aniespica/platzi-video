@@ -1,6 +1,6 @@
 import React from 'react'
 import Category from './category'
-import Search from '../../containers/search'
+import Search from '../../widgets/containers/search'
 import './categories.css'
 export default function Categories(props){
   return (

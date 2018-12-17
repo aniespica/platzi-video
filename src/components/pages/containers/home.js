@@ -1,18 +1,19 @@
 import React, {Component} from 'react'
-import Categories from '../components/categories/categories'
-import HomeLayout from '../components/pages/home-layout'
-import Related from '../components/pages/related'
-import ModalContainer from './modal'
-import Modal from '../components/widgets/modal'
-import HandleError from './handle-error'
-import VideoPlayer from '../components/player/containers/video-player';
+import Categories from '../../categories/components/categories'
+import HomeLayout from '../components/home-layout'
+import Related from '../components/related'
+import ModalContainer from '../../widgets/containers/modal'
+import Modal from '../../widgets/components/modal'
+import HandleError from '../../errors/containers/handle-error'
+import VideoPlayer from '../../player/containers/video-player';
 export default class Home extends Component {
   state = {
     modalVisible: false,
   }
-  handleOpenModalClick = () => {
+  handleOpenModalClick = (media) => {
     this.setState({
-      modalVisible: true
+      modalVisible: true,
+      media
     })
   }
   handleCloseModalClick = () => {
@@ -28,13 +29,16 @@ export default class Home extends Component {
       <HandleError>
         <HomeLayout>
           <Related/>
-          <VideoPlayer autoplay/>
           <Categories {...this.props} handleOpenModal={this.handleOpenModalClick}/>
           {
             this.state.modalVisible &&
             <ModalContainer>
               <Modal handleClick={this.handleCloseModalClick}>
-                <h1>Esto es un portal</h1>
+                <VideoPlayer 
+                  autoplay
+                  src={this.state.media.src}
+                  title={this.state.media.title}
+                />
               </Modal>
             </ModalContainer>
           }

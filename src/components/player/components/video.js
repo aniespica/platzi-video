@@ -1,6 +1,7 @@
-import React, {Component} from 'react'
-import './video.css'
-export default class Video extends Component {
+import React, { Component } from 'react';
+import './video.css';
+
+class Video extends Component {
   togglePlay() {
     if (this.props.pause) {
       this.video.play()
@@ -8,29 +9,46 @@ export default class Video extends Component {
       this.video.pause()
     }
   }
+  toggleMuted() {
+    if (this.props.muted) {
+      this.video.muted = true
+    } else {
+      this.video.muted = false
+    }
+  }
   componentWillReceiveProps(nextProps) {
     if (nextProps.pause !== this.props.pause) {
-      this.togglePlay()
+      this.togglePlay();
+    }
+    if (nextProps.muted !== this.props.muted) {
+      this.toggleMuted();
     }
   }
   setRef = element => {
-    this.video = element
+    this.video = element;
   }
   render() {
-
     const {
-      handleLoadedMetadata
-    } = this.props
+      handleLoadedMetadata,
+      handleTimeUpdate,
+      handleSeeking,
+      handleSeeked
+    } = this.props;
 
     return (
       <div className="Video">
-        <video 
+        <video
           autoPlay={this.props.autoplay}
           src={this.props.src}
           ref={this.setRef}
           onLoadedMetadata={handleLoadedMetadata}
+          onTimeUpdate={handleTimeUpdate}
+          onSeeking={handleSeeking}
+          onSeeked={handleSeeked}
         />
       </div>
     )
   }
 }
+
+export default Video;
